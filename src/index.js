@@ -23,8 +23,8 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function search(event) {
-  event.preventDefault();
+function search(city) {
+  city.preventDefault();
   let cityElement = document.querySelector("#city");
   let cityInput = document.querySelector("#city-input");
   cityElement.innerHTML = cityInput.value;
@@ -40,6 +40,13 @@ function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
   let iconElement = document.querySelector("#icon");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `${temperature}`;
   iconElement.setAttribute(
     "src",
