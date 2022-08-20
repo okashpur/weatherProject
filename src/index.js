@@ -16,7 +16,7 @@ function formatDate(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = days[dayIndex];
 
@@ -39,7 +39,12 @@ function search(event) {
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = `${temperature}`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 // Feature #1
